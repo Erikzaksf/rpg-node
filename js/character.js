@@ -38,4 +38,8 @@ export class Character {
     return this.abilityPoints;
   }
 
+  attack(target){
+    target.damageHealth(this.strength);
+  }
+
 }

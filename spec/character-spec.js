@@ -51,4 +51,11 @@ describe('Character', function() {
       expect(testChar.abilityPoints).toEqual(85);
     });
   });
+  describe('attack', function(){
+    it("deals damage equal to characters strength", function(){
+      let testEnemy = new Character("evilBob");
+      testChar.attack(testEnemy);
+      expect(testEnemy.health).toEqual(0);
+    });
+  });
 });

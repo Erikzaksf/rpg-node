@@ -1,4 +1,5 @@
 import {Pearl} from './../js/pearl.js';
+import {Character} from './../js/character.js';
 
 describe('Pearl', function() {
   let testPearl;
@@ -19,4 +20,12 @@ describe('Pearl', function() {
       expect(testPearl.abilityPoints).toEqual(20);
     });
   });
+  describe('spearThrow', function() {
+    it("removes Pearls strength from targets hp", function() {
+      let testEnemy = new Character("Jasper");
+      testPearl.throwSpear(testEnemy);
+      expect(testEnemy.health).toEqual(92);
+    });
+  });
+
 });

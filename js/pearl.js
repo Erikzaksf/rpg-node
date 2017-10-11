@@ -9,4 +9,15 @@ export class Pearl extends Character {
     this.strength = 8;
     this.abilityPoints = 20;
   }
+
+  throwSpear(target){
+    if (this.abilityPoints >=5) {
+      target.damageHealth(this.strength);
+      this.abilityPoints -= 5;
+      return true;
+    } else{
+      return false;
+    }
+  }
+
 }
