@@ -8,4 +8,14 @@ export class Steven extends Character {
     this.strength = 5;
     this.abilityPoints = 15;
   }
+
+  healAlly(target) {
+    if (this.abilityPoints >= 5) {
+      target.heal(this.level * 3);
+      this.abilityPoints -= 5;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
