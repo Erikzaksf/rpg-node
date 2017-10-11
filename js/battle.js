@@ -12,7 +12,13 @@ export class Battle {
     this.turnCounter = 0;
   }
   startTurn(){
-    return this.turnOrder[this.turnCounter]
+    let activeChar = this.turnOrder[this.turnCounter];
+    if (activeChar.health <= 0){
+      this.endTurn();
+      return this.startTurn();
+    }else{
+      return activeChar;
+    }
   }
   endTurn(){
     this.turnCounter += 1;

@@ -39,6 +39,10 @@ describe('Battle', function() {
     it("returns active player", function(){
       expect(testBattle.startTurn()).toEqual(testGem1);
     });
+    it("will skip player/char with 0 health points", function() {
+      testGem1.health = 0;
+      expect(testBattle.startTurn()).toEqual(testChar1);
+    });
   });
 
   describe('endTurn', function(){
