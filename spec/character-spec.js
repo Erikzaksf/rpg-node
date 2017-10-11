@@ -22,6 +22,24 @@ describe('Character', function() {
       testChar.level = 50;
       expect(testChar.levelUp()).toEqual(50);
     });
+
+    it("resets a character's XP counter to 0", function() {
+      testChar.experience = 100;
+      testChar.levelUp();
+      expect(testChar.experience).toEqual(0);
+    });
+  });
+
+  describe('gainXP', function() {
+    it("adds the given XP amount to the character's experience stat", function() {
+      testChar.gainXP(20);
+      expect(testChar.experience).toEqual(20);
+    });
+
+    it("levels character up when their XP passes their current level * 100", function() {
+      testChar.gainXP(101);
+      expect(testChar.level).toEqual(2);
+    })
   });
 
   describe('damageHealth', function() {

@@ -2,6 +2,7 @@ export class Character {
   constructor(name) {
     this.name = name;
     this.level = 1; // Max 50
+    this.experience = 0;
     this.health = 100;
     this.dexterity = 100;
     this.strength = 100;
@@ -14,9 +15,18 @@ export class Character {
     if (this.level === 50) {
       return this.level;
     } else {
+      this.experience = 0;
       this.level += 1;
       return this.level;
     }
+  }
+
+  gainXP(points) {
+    this.experience += points;
+    if (this.experience >= this.level * 100) {
+      this.levelUp();
+    }
+    return this.experience;
   }
 
   damageHealth(damage) {

@@ -29,8 +29,8 @@ export class Battle {
   endTurn(){
     let over = this.battleOver();
     if (over) {
-      //end battle stuff
-      return 'Battle Complete'
+      // end battle stuff - XP
+      return over;
     } else {
       this.turnCounter += 1;
       if (this.turnCounter >= 8){
