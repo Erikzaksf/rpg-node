@@ -31,7 +31,7 @@ export class Character {
     return this.health;
   }
 
-  rest(time){
+  rest(time) {
     this.abilityPoints += time * 5;
     if (this.abilityPoints > 100) {
       this.abilityPoints = 100;
@@ -39,7 +39,7 @@ export class Character {
     return this.abilityPoints;
   }
 
-  attack(target){
+  attack(target) {
     if (Math.abs(target.position - this.position) <= 1) {
       target.damageHealth(this.strength);
       return true;
@@ -48,4 +48,8 @@ export class Character {
     }
   }
 
+  switchPosition() {
+    let directions = {0: 1, 1: 0, 2: 3, 3: 2}
+    this.position = directions[this.position];
+  }
 }

@@ -66,4 +66,23 @@ describe('Character', function() {
       expect(testEnemy.health).toEqual(100);
     });
   });
+
+  describe("switchPosition", function() {
+    it('moves Character to forward position if they are in back position', function() {
+      testChar.switchPosition();
+      expect(testChar.position).toEqual(1);
+      testChar.position = 3;
+      testChar.switchPosition();
+      expect(testChar.position).toEqual(2);
+    });
+
+    it('moves Character to back position if they are in forward position', function() {
+      testChar.position = 1;
+      testChar.switchPosition();
+      expect(testChar.position).toEqual(0);
+      testChar.position = 2;
+      testChar.switchPosition();
+      expect(testChar.position).toEqual(3);
+    });
+  });
 });
