@@ -1,3 +1,4 @@
+import { Item } from './../js/item.js';
 import { Character } from './../js/character.js';
 
 describe('Character', function() {
@@ -83,6 +84,15 @@ describe('Character', function() {
       testChar.position = 2;
       testChar.switchPosition();
       expect(testChar.position).toEqual(3);
+    });
+  });
+
+  describe('use', function() {
+    it("changes the item's assigned stat by the item's assigned effect", function() {
+      let testItem = new Item('Potion', 'health', 5);
+      testChar.health = 10;
+      testChar.use(testItem);
+      expect(testChar.health).toEqual(15);
     });
   });
 });

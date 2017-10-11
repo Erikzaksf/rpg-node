@@ -52,4 +52,15 @@ export class Character {
     let directions = {0: 1, 1: 0, 2: 3, 3: 2}
     this.position = directions[this.position];
   }
+
+  use(item) {
+    let self = this;
+    let statChanges = {
+      health: function(effect) { self.health += effect; },
+      dexterity: function(effect) { self.dexterity += effect; },
+      strength: function(effect) { self.strength += effect; },
+      abilityPoints: function(effect) { self.abilityPoints += effect; }
+    };
+    statChanges[item.stat](item.effect);
+  }
 }
