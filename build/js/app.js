@@ -14,13 +14,22 @@ var Character = exports.Character = function () {
     _classCallCheck(this, Character);
 
     this.name = name;
-    this.level = 1;
+    this.level = 1; // Max 50
+    this.health = 100;
+    this.dexterity = 100;
+    this.strength = 100;
+    this.abilityPoints = 100;
   }
 
   _createClass(Character, [{
     key: "levelUp",
     value: function levelUp() {
-      this.level += 1;
+      if (this.level === 50) {
+        return this.level;
+      } else {
+        this.level += 1;
+        return this.level;
+      }
     }
   }]);
 
@@ -34,9 +43,9 @@ var _character = require('./../js/character.js');
 
 $(document).ready(function () {
   var char = new _character.Character('Bob');
-  alert('Character ' + char.name + ' is level ' + char.level + '.');
+  // alert(`Character ${char.name} is level ${char.level}.`);
   char.levelUp();
-  alert('Character ' + char.name + ' is now level ' + char.level + '.');
+  // alert(`Character ${char.name} is now level ${char.level}.`);
 });
 
 },{"./../js/character.js":1}]},{},[2]);
