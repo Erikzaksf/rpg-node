@@ -16,4 +16,17 @@ export class Character {
       return this.level;
     }
   }
+
+  damageHealth(damage) {
+    this.health -= damage;
+    return this.health;
+  }
+
+  heal(points) {
+    this.health += points;
+    if (this.health > 100) {
+      this.health = 100;
+    }
+    return this.health;
+  }
 }

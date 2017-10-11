@@ -31,6 +31,21 @@ var Character = exports.Character = function () {
         return this.level;
       }
     }
+  }, {
+    key: "damageHealth",
+    value: function damageHealth(damage) {
+      this.health -= damage;
+      return this.health;
+    }
+  }, {
+    key: "heal",
+    value: function heal(points) {
+      this.health += points;
+      if (this.health > 100) {
+        this.health = 100;
+      }
+      return this.health;
+    }
   }]);
 
   return Character;

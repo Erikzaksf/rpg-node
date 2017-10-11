@@ -22,4 +22,25 @@ describe('Character', function() {
       expect(testChar.levelUp()).toEqual(50);
     });
   });
+
+  describe('damageHealth', function() {
+    it("removes the given amount from the character's health", function() {
+      testChar.damageHealth(10);
+      expect(testChar.health).toEqual(90);
+    });
+  });
+
+  describe('heal', function() {
+    it("adds the given amount to the character's health", function() {
+      testChar.health = 10;
+      testChar.heal(80);
+      expect(testChar.health).toEqual(90);
+    });
+
+    it("does not go above 100", function() {
+      testChar.health = 30;
+      testChar.heal(80);
+      expect(testChar.health).toEqual(100);
+    });
+  });
 });
