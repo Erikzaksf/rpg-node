@@ -43,4 +43,12 @@ describe('Character', function() {
       expect(testChar.health).toEqual(100);
     });
   });
+
+  describe('rest', function(){
+    it("adds 5 ability points for each time unit rested", function() {
+      testChar.abilityPoints = 80;
+      testChar.rest(1);
+      expect(testChar.abilityPoints).toEqual(85);
+    });
+  });
 });

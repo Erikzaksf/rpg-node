@@ -29,4 +29,13 @@ export class Character {
     }
     return this.health;
   }
+
+  rest(time){
+    this.abilityPoints += time * 5;
+    if (this.abilityPoints > 100) {
+      this.abilityPoints = 100;
+    }
+    return this.abilityPoints;
+  }
+
 }

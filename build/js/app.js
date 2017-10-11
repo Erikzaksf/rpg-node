@@ -46,6 +46,15 @@ var Character = exports.Character = function () {
       }
       return this.health;
     }
+  }, {
+    key: "rest",
+    value: function rest(time) {
+      this.abilityPoints += time * 5;
+      if (this.abilityPoints > 100) {
+        this.abilityPoints = 100;
+      }
+      return this.abilityPoints;
+    }
   }]);
 
   return Character;
