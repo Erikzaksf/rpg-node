@@ -55,6 +55,11 @@ var Character = exports.Character = function () {
       }
       return this.abilityPoints;
     }
+  }, {
+    key: "attack",
+    value: function attack(target) {
+      target.damageHealth(this.strength);
+    }
   }]);
 
   return Character;
