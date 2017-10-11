@@ -8,4 +8,15 @@ export class Garnet extends Character {
     this.strength = 20;
     this.abilityPoints = 20;
   }
+
+  powerfists(target) {
+    if(this.abilityPoints >= 6 && Math.abs(target.position - this.position) <= 1) {
+      target.damageHealth(this.strength / 2);
+      target.position = 3;
+      this.abilityPoints -= 6;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
