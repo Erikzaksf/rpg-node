@@ -87,12 +87,30 @@ describe('Character', function() {
     });
   });
 
+  describe('take', function() {
+    it("adds the item to the character's inventory", function() {
+      let testItem = new Item('Potion', 'health', 5);
+      testChar.take(testItem);
+      expect(testChar.inventory).toEqual({'Potion': [testItem]})
+    });
+  });
+
   describe('use', function() {
     it("changes the item's assigned stat by the item's assigned effect", function() {
       let testItem = new Item('Potion', 'health', 5);
+      testChar.take(testItem);
       testChar.health = 10;
       testChar.use(testItem);
       expect(testChar.health).toEqual(15);
+    });
+
+    it("does not allow user to use an item that is not in their inventory", function() {
+      let testItem = new Item('Potion', 'health', 5);
+      testChar.take(testItem);
+      testChar.use(testItem);
+      testChar.health = 10;
+      expect(testChar.use(testItem)).toEqual(false);
+      expect(testChar.health).toEqual(10);
     });
   });
 });

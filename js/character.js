@@ -7,6 +7,7 @@ export class Character {
     this.strength = 100;
     this.abilityPoints = 100;
     this.position = 0;
+    this.inventory = {};
   }
 
   levelUp() {
@@ -53,14 +54,28 @@ export class Character {
     this.position = directions[this.position];
   }
 
+  take(item) {
+    if (this.inventory.hasOwnProperty(item.name)) {
+      this.inventory[item.name].push(item);
+    } else {
+      this.inventory[item.name] = [item];
+    }
+  }
+
   use(item) {
-    let self = this;
-    let statChanges = {
-      health: function(effect) { self.health += effect; },
-      dexterity: function(effect) { self.dexterity += effect; },
-      strength: function(effect) { self.strength += effect; },
-      abilityPoints: function(effect) { self.abilityPoints += effect; }
-    };
-    statChanges[item.stat](item.effect);
+    if (this.inventory.hasOwnProperty(item.name) && this.inventory[item.name].length > 0) {
+      let self = this;
+      let statChanges = {
+        health: function(effect) { self.health += effect; },
+        dexterity: function(effect) { self.dexterity += effect; },
+        strength: function(effect) { self.strength += effect; },
+        abilityPoints: function(effect) { self.abilityPoints += effect; }
+      };
+      statChanges[item.stat](item.effect);
+      this.inventory[item.name].pop();
+      return true;
+    } else {
+      return false;
+    }
   }
 }
