@@ -11,19 +11,55 @@ export class Battle {
     }
     this.turnCounter = 0;
   }
+
   startTurn(){
     let activeChar = this.turnOrder[this.turnCounter];
     if (activeChar.health <= 0){
-      this.endTurn();
-      return this.startTurn();
+      let result = this.endTurn();
+      if (result) {
+        return result;
+      } else {
+        return this.startTurn();
+      }
     }else{
       return activeChar;
     }
   }
+
   endTurn(){
-    this.turnCounter += 1;
-    if (this.turnCounter >= 8){
-      this.turnCounter = 0;
+    let over = this.battleOver();
+    if (over) {
+      //end battle stuff
+      return 'Battle Complete'
+    } else {
+      this.turnCounter += 1;
+      if (this.turnCounter >= 8){
+        this.turnCounter = 0;
+      }
+    }
+  }
+
+  battleOver() {
+    let gemWin = true;
+    let enemyWin = true;
+    this.gemTeam.characters.forEach(function(character) {
+      if (character.health > 0) {
+        enemyWin = false;
+      }
+    });
+    this.enemyTeam.characters.forEach(function(character) {
+      if (character.health > 0) {
+        gemWin = false;
+      }
+    });
+    if (gemWin && enemyWin) {
+      return 'tie';
+    } else if (gemWin) {
+      return this.gemTeam;
+    } else if (enemyWin){
+      return this.enemyTeam;
+    } else {
+      return null;
     }
   }
 }

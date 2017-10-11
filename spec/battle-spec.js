@@ -52,4 +52,30 @@ describe('Battle', function() {
     });
   });
 
+  describe('battleOver', function() {
+    it("returns null if each team has characters still unpoofed", function() {
+      expect(testBattle.battleOver()).toEqual(null);
+    });
+
+    it("returns 'tie' if all characters on each team have been poofed", function() {
+      testBattle.turnOrder.forEach(function(char) {
+        char.health = 0;
+      });
+      expect(testBattle.battleOver()).toEqual('tie');
+    });
+
+    it("returns the gem team if all characters on enemy team have been poofed", function() {
+      testEnemyTeam.characters.forEach(function(char) {
+        char.health = 0;
+      });
+      expect(testBattle.battleOver()).toEqual(testGemTeam);
+    });
+
+    it("returns the enemy team if all characters on gem team have been poofed", function() {
+      testGemTeam.characters.forEach(function(char) {
+        char.health = 0;
+      });
+      expect(testBattle.battleOver()).toEqual(testEnemyTeam);
+    });
+  });
 });
