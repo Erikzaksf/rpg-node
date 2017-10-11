@@ -16,4 +16,28 @@ describe('Connie', function() {
       expect(testConnie.abilityPoints).toEqual(8);
     });
   });
+
+  describe('piercingLunge', function() {
+    it("deals Connie's strength in damage to target if target is 1 or 2 squares away", function() {
+      let testEnemy = new Character('Jasper');
+      testEnemy.position = 2;
+      testConnie.piercingLunge(testEnemy);
+      expect(testEnemy.health).toEqual(82);
+    });
+
+    it("does not cast if Connie is more than two squares away", function() {
+      let testEnemy = new Character('Jasper');
+      testEnemy.position = 3;
+      expect(testConnie.piercingLunge(testEnemy)).toEqual(false);
+      expect(testEnemy.health).toEqual(100);
+    });
+
+    it("does not cast if Connie has less than 4 AP", function() {
+      let testEnemy = new Character('Jasper');
+      testEnemy.position = 2;
+      testConnie.abilityPoints = 3;
+      expect(testConnie.piercingLunge(testEnemy)).toEqual(false);
+      expect(testEnemy.health).toEqual(100);
+    });
+  });
 });

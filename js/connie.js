@@ -8,4 +8,14 @@ export class Connie extends Character {
     this.strength = 18;
     this.abilityPoints = 8;
   }
+
+  piercingLunge(target) {
+    if (this.abilityPoints >= 4 && Math.abs(target.position - this.position) <= 2) {
+      target.damageHealth(18);
+      this.abilityPoints -= 4;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
