@@ -6,6 +6,7 @@ export class Character {
     this.dexterity = 100;
     this.strength = 100;
     this.abilityPoints = 100;
+    this.position = 0;
   }
 
   levelUp() {
@@ -39,7 +40,12 @@ export class Character {
   }
 
   attack(target){
-    target.damageHealth(this.strength);
+    if (Math.abs(target.position - this.position) <= 1) {
+      target.damageHealth(this.strength);
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

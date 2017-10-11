@@ -58,5 +58,12 @@ describe('Character', function() {
       testChar.attack(testEnemy);
       expect(testEnemy.health).toEqual(0);
     });
+
+    it("does not allow character to attack a character that is not adjacent to them", function() {
+      let testEnemy = new Character("evilBob");
+      testEnemy.position = 3;
+      expect(testChar.attack(testEnemy)).toEqual(false);
+      expect(testEnemy.health).toEqual(100);
+    });
   });
 });

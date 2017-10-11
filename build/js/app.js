@@ -19,6 +19,7 @@ var Character = exports.Character = function () {
     this.dexterity = 100;
     this.strength = 100;
     this.abilityPoints = 100;
+    this.position = 0;
   }
 
   _createClass(Character, [{
@@ -58,7 +59,12 @@ var Character = exports.Character = function () {
   }, {
     key: "attack",
     value: function attack(target) {
-      target.damageHealth(this.strength);
+      if (Math.abs(target.position - this.position) <= 1) {
+        target.damageHealth(this.strength);
+        return true;
+      } else {
+        return false;
+      }
     }
   }]);
 
