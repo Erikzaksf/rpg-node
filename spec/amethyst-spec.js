@@ -33,6 +33,22 @@ describe("Amethyst", function() {
       expect(testChar3.health).toEqual(100);
       expect(testChar4.health).toEqual(100);
     });
+
+    it('does not cast if Amethyst has less than 10 AP', function() {
+      let testChar1 = new Character('one');
+      testChar1.position = 2;
+      let testChar2 = new Character('two');
+      testChar2.position = 2;
+      let testChar3 = new Character('three');
+      let testChar4 = new Character('four');
+      let testTeam = new Team ([testChar1, testChar2, testChar3, testChar4],'CrystalGems');
+      testAmethyst.abilityPoints = 6;
+      expect(testAmethyst.wreckingBall(testTeam)).toEqual(false);
+      expect(testChar1.health).toEqual(100);
+      expect(testChar2.health).toEqual(100);
+      expect(testChar3.health).toEqual(100);
+      expect(testChar4.health).toEqual(100);
+    })
   });
-  
+
 });

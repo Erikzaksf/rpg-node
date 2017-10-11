@@ -17,8 +17,9 @@ export class Amethyst extends Character {
           character.damageHealth(3 * self.level);
         }
       });
+      this.abilityPoints -= 10;
       return true;
-    }else {
+    } else {
       return false;
     }
   }
