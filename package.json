@@ -32,5 +32,12 @@
     "karma-jquery": "^0.2.2",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "dist": "^0.1.2",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-minify-css": "^1.2.4",
+    "rpgui": "file:dist",
+    "sass": "^1.0.0-beta.2"
   }
 }

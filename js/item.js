@@ -4,4 +4,8 @@ export class Item {
     this.stat = stat;
     this.effect = effect;
   }
+
+  
+
+
 }
